@@ -1,3 +1,4 @@
-podman build -t omdv:cooker -f ./Dockerfile .
+Default build is cooker
 
-podman run --rm -it -v /home/mdawkins/Builds/rpms/:/RPMS/ omdv:cooker bp <package>
+podman build -t omdv:rolling --build-arg OMDV_VERSION=rolling -f ./Dockerfile .
+podman run --rm -it -v /home/mdawkins/Builds/rpms/:/RPMS/ omdv:rolling bp <package>

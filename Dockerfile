@@ -10,7 +10,8 @@ RUN \
         hostname && \
     dnf clean all && \
     rm -rf /var/cache/dnf && \
-    echo -e '\nbp() {\n    dnf -y --refresh builddep "$1"/*.spec && abb build "$1/"\n}\n' >> /root/.bashrc && \
+    echo -e '#!/bin/bash\n'\
+    'dnf -y --refresh builddep "$1"/*.spec && abb build "$1"'\
+    > /usr/local/bin/bp && chmod +x /usr/local/bin/bp && \
     mkdir -p /RPMS
 
-ENTRYPOINT ["/bin/bash", "-l"]
