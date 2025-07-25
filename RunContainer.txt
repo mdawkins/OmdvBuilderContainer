@@ -1,4 +1,9 @@
 Default build is cooker
 
-podman build -t omdv:rolling --build-arg OMDV_VERSION=rolling -f ./Dockerfile .
-podman run --rm -it -v /home/mdawkins/Builds/rpms/:/RPMS/ omdv:rolling bp <package>
+podman build -t omdv:rolling --build-arg OMDV_VERSION=rolling --build-arg ARCH=znver1 -f ./Dockerfile .
+If local build:    --pull=never
+podman run --rm -it -v ~/Builds/rpms/:/RPMS/ omdv:rolling bp <package>
+
+# Might need this if your create your own containers
+sudo dnf install systemd-container
+sudo podman image scp root@localhost::localhost/openmandriva/rolling:znver1 $USER@localhost::

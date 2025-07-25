@@ -1,6 +1,7 @@
 ARG OMDV_VERSION=cooker
+ARG ARCH=x86-64
 
-FROM openmandriva/${OMDV_VERSION}
+FROM openmandriva/${OMDV_VERSION}:${ARCH}
 
 WORKDIR /RPMS
 
